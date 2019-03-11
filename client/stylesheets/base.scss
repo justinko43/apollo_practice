@@ -1,0 +1,29 @@
+body {
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+  font: 16px;
+}
+
+// set the box model to include padding, border, and margin
+// in sizing calculations
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+// default removes focus effects
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  font: inherit;
+  transition: all 0.2s;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,.2);
+}
+
+@import 'components/all';
