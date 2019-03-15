@@ -1,7 +1,10 @@
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 const bodyParser = require('body-parser');
+const graphqlHTTP = require('express-graphql');
 require('dotenv').config();
+
+const schema = require('./schema');
 
 const app = express();
 
@@ -18,10 +21,17 @@ app.use(bodyParser.json({ limit: '4MB' }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('build'));
 
+// graphql
+app.use('/graphql', graphqlHTTP({
+  schema,
+  graphiql: true,
+}));
+
 // our routes
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'));
+  // res.sendFile(path.join(__dirname, '../build/index.html'));
+  res.send('its live').status(200);
 });
 
 // catch 404 and forward to error handler
